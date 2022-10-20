@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { ITasks } from "../../types/iTasks";
 import Cronometro from "../Cronometro";
 import Form from "../Form";
 import List from "../List";
@@ -9,12 +10,13 @@ import {
 } from "./styles"
 
 export default function MainContainer() {
+    const [tasks, setTasks] = useState<ITasks[] | []>([])
     return (
         <>
             <Container>
-                <Form></Form>
+                <Form setTasks={setTasks}></Form>
                 <Cronometro/>
-                <List/>
+                <List tasks={tasks}/>
             </Container>
         </>
     )

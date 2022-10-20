@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ListStyle } from "./sytles";
 import Item from "./Item"
+import { ITasks } from "../../types/iTasks";
 
-export default function List(){
-    const tasks = [{
-        tarefa: "React",
-        tempo: "00:25:00"
-    },
-    {
-        tarefa: "Typescript",
-        tempo: "00:30:00"
-    }]
+export default function List( { tasks }: {tasks: ITasks[]} ){
+    
     return (
         <ListStyle>
             <h2>Tarefas do dia</h2>

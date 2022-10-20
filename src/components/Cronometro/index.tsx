@@ -1,12 +1,12 @@
 import React from "react";
 import ButtonT from "../ButtonT";
 import Relogio from "./Relogio";
-import { CronStyled } from "./styles";
+import { CronStyled, CronTitle } from "./styles";
 
 export default function Cronometro(){
     return(
         <CronStyled>
-            <p>Escolha um card e inicie o cronometro</p>
+            <CronTitle>Escolha um card e inicie o cronometro</CronTitle>
             <div>
                 <Relogio></Relogio>
             </div>
