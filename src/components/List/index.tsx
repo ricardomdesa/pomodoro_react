@@ -3,7 +3,12 @@ import { ListStyle } from "./sytles";
 import Item from "./Item"
 import { ITasks } from "../../types/iTasks";
 
-export default function List( { tasks }: {tasks: ITasks[]} ){
+interface Props {
+    tasks: ITasks[],
+    selectTask: (selectedTask: ITasks) => void
+}
+
+export default function List( { tasks, selectTask }: Props ){
     
     return (
         <ListStyle>
@@ -12,6 +17,7 @@ export default function List( { tasks }: {tasks: ITasks[]} ){
                 {tasks.map((item, idx) => (
                     <Item
                         key={idx}
+                        selectTask={selectTask}
                         {...item}
                     />
                 ))}

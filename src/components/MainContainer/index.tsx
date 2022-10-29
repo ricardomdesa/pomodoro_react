@@ -11,12 +11,25 @@ import {
 
 export default function MainContainer() {
     const [tasks, setTasks] = useState<ITasks[] | []>([])
+    const [selected, setSelected] = useState<ITasks>()
+
+    const selectTask = (selectedTask: ITasks) => {
+        setSelected(selectedTask)
+        setTasks(oldT => oldT.map(tasks => ({
+            ...tasks,
+            selecionado: tasks.id === selectedTask.id ? true : false
+        })))
+    }
+
     return (
         <>
             <Container>
                 <Form setTasks={setTasks}></Form>
                 <Cronometro/>
-                <List tasks={tasks}/>
+                <List 
+                tasks={tasks}
+                selectTask={selectTask}
+                />
             </Container>
         </>
     )

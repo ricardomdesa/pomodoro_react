@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import ButtonT from "../ButtonT";
 import { FormStyle } from "./styles";
+import { v4 as uuidv4 } from "uuid";
+import { ITasks } from "../../types/iTasks";
 
-export default function Form({setTasks}: {setTasks: React.Dispatch<React.SetStateAction<{
-    tarefa: string;
-    tempo: string;
-}[]>>}){
+export default function Form({setTasks}: {setTasks: React.Dispatch<React.SetStateAction<[] | ITasks[]>>}){
     const [time, setTime] = useState("00:00:00")
     const [task, setTask] = useState("")
     function addTask(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
-        setTasks(oldTasks => [...oldTasks, {tarefa: task, tempo: time}])
+        setTasks(oldTasks => [...oldTasks, 
+            {
+                id: uuidv4(),
+                tarefa: task, 
+                tempo: time,
+                selecionado: false,
+                completado: false
+            }
+
+        ])
+        // Clear fields
+        setTask("")
+        setTime("00:00:00")
     }
     return(
         <FormStyle onSubmit={addTask}>
