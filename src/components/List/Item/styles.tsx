@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface ItemTypes {
-    itSelecionado: boolean,
-    itCompletado: boolean
+  itSelecionado: boolean,
+  itCompletado: boolean
 }
 
 export const ItemStyle = styled.li<ItemTypes>`
@@ -38,7 +38,7 @@ export const ItemStyle = styled.li<ItemTypes>`
     
         .concluido {
         display: block;
-        background-image: url('../../assets/img/check-mark.svg');
+        background-image: url('../../../assets/img/check-mark.svg');
         background-repeat: no-repeat;
         background-size: 38px 38px;
         position: absolute;
@@ -56,7 +56,7 @@ export const ItemStyle = styled.li<ItemTypes>`
   
     .concluido {
       display: block;
-      background-image: url('../../assets/img/check-mark.svg');
+      background-image: url('../../../assets/img/check-mark.svg');
       background-repeat: no-repeat;
       background-size: 38px 38px;
       position: absolute;

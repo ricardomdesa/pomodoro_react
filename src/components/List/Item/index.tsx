@@ -7,7 +7,6 @@ interface Props extends ITasks{
 }
 
 export default function Item({id, tarefa, tempo, selecionado, completado, selectTask}: Props){
-    console.log(id, tarefa, tempo, selecionado, completado)
     return(
         <ItemStyle 
             itSelecionado={selecionado}

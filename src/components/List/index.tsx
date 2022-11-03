@@ -8,8 +8,8 @@ interface Props {
     selectTask: (selectedTask: ITasks) => void
 }
 
-export default function List( { tasks, selectTask }: Props ){
-    
+export default function List({ tasks, selectTask }: Props) {
+
     return (
         <ListStyle>
             <h2>Tarefas do dia</h2>

@@ -25,10 +25,10 @@ export default function MainContainer() {
         <>
             <Container>
                 <Form setTasks={setTasks}></Form>
-                <Cronometro/>
-                <List 
-                tasks={tasks}
-                selectTask={selectTask}
+                <Cronometro selected={selected} />
+                <List
+                    tasks={tasks}
+                    selectTask={selectTask}
                 />
             </Container>
         </>
