@@ -1,25 +1,25 @@
 import React from "react"
-import { RelogioStyled } from "./styles"
+import { prepare_min_sec } from "../../../common/utils/time"
+import { NumberStyled, RelogioStyled } from "./styles"
 
 interface Props {
     tempo: number | undefined
 }
 
 export default function Relogio({ tempo = 0 }: Props) {
-    const min = Math.floor(tempo / 60)
-    const sec = tempo % 60
-    const [minDezena, minUnidade] = String(min)
-    const [secDezena, secUnidade] = String(sec)
-    console.log(minDezena, minUnidade, secDezena, secUnidade)
+
+    const { secDezena, secUnidade, minDezena, minUnidade } = prepare_min_sec(tempo)
+
     return (
         <>
             <RelogioStyled>
-                <span className="relogioNumero">{minDezena}</span>
-                <span className="relogioNumero">{minUnidade}</span>
+                <NumberStyled>{minDezena}</NumberStyled>
+                <NumberStyled>{minUnidade}</NumberStyled>
                 <span>:</span>
-                <span className="relogioNumero">{secDezena}</span>
-                <span className="relogioNumero">{secUnidade}</span>
+                <NumberStyled>{secDezena}</NumberStyled>
+                <NumberStyled>{secUnidade}</NumberStyled>
             </RelogioStyled>
         </>
     )
+
 }
