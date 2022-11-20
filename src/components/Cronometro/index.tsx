@@ -35,7 +35,7 @@ export default function Cronometro({ selected, finalizarTarefa }: Props) {
             <div>
                 <Relogio tempo={tempo}></Relogio>
             </div>
-            <ButtonT onClick={(e: React.FormEvent<HTMLFormElement>) => regressiva(tempo)} texto="Comecar!"></ButtonT>
+            <ButtonT onClick={(e: React.FormEvent<HTMLFormElement>) => regressiva(tempo)}>Comecar!</ButtonT>
         </CronStyled>
     )
 }

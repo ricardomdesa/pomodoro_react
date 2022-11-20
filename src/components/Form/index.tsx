@@ -4,7 +4,11 @@ import { FormStyle } from "./styles";
 import { v4 as uuidv4 } from "uuid";
 import { ITasks } from "../../types/iTasks";
 
-export default function Form({ setTasks }: { setTasks: React.Dispatch<React.SetStateAction<[] | ITasks[]>> }) {
+interface Props{
+    setTasks: React.Dispatch<React.SetStateAction<[] | ITasks[]>>
+}
+
+export default function Form({ setTasks }: Props) {
     const [time, setTime] = useState("00:00:00")
     const [task, setTask] = useState("")
     function addTask(event: React.FormEvent<HTMLFormElement>) {
@@ -55,7 +59,7 @@ export default function Form({ setTasks }: { setTasks: React.Dispatch<React.SetS
                     required
                 />
             </div>
-            <ButtonT texto="Add" type="submit"></ButtonT>
+            <ButtonT type="submit">Add</ButtonT>
         </FormStyle>
     )
 }

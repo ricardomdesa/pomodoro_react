@@ -4,14 +4,19 @@ import {
 } from "./styles"
 
 interface Props {
-    type?: "button" | "submit" | "reset" | undefined, 
+    type?: "button" | "submit" | "reset" | undefined,
     texto?: string,
+    children: React.ReactNode,
     onClick?: (evt: any) => void
-} 
+}
 
 
-export default function ButtonT({texto, type, onClick}: Props) {
+export default function ButtonT({type, children, onClick }: Props) {
     return (
-        <ButtonStyle onClick={onClick} type={type}>{texto}</ButtonStyle>
+        <ButtonStyle
+            onClick={onClick}
+            type={type}
+            
+        >{children}</ButtonStyle>
     )
 }
