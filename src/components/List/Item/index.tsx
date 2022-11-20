@@ -1,6 +1,6 @@
 import React from "react";
 import { ITasks } from "../../../types/iTasks";
-import { ItemStyle } from "./styles";
+import { ItemStyle, IconCompleted } from "./styles";
 
 interface Props extends ITasks{
     selectTask: (selectedTask: ITasks) => void
@@ -11,9 +11,10 @@ export default function Item({id, tarefa, tempo, selecionado, completado, select
         <ItemStyle 
             itSelecionado={selecionado}
             itCompletado={completado}
-            onClick={() => selectTask({id, tarefa, tempo, selecionado, completado})}>
+            onClick={() => !completado && selectTask({id, tarefa, tempo, selecionado, completado})}>
                 <h3>{tarefa}</h3>
                 <span>{tempo}</span>
+                {completado && <IconCompleted></IconCompleted>}
         </ItemStyle>
     )
 }

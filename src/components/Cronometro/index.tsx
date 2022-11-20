@@ -6,10 +6,11 @@ import Relogio from "./Relogio";
 import { CronStyled, CronTitle } from "./styles";
 
 interface Props {
-    selected: ITasks | undefined
+    selected: ITasks | undefined,
+    finalizarTarefa: () => void
 }
 
-export default function Cronometro({ selected }: Props) {
+export default function Cronometro({ selected, finalizarTarefa }: Props) {
     const [tempo, setTempo] = useState<number>(tempoParaSegundos("00:00:00"))
 
     useEffect(() => {
@@ -18,13 +19,23 @@ export default function Cronometro({ selected }: Props) {
         }
     }, [selected])
 
+    const regressiva = (contador: number = 0) => {
+        setTimeout(() => {
+            if(contador > 0){
+                setTempo(contador - 1)
+                return regressiva(contador - 1)
+            }
+            finalizarTarefa()
+        }, 1000)
+    }
+
     return (
         <CronStyled>
             <CronTitle>Escolha um card e inicie o cronometro</CronTitle>
             <div>
                 <Relogio tempo={tempo}></Relogio>
             </div>
-            <ButtonT texto="Comecar!"></ButtonT>
+            <ButtonT onClick={(e: React.FormEvent<HTMLFormElement>) => regressiva(tempo)} texto="Comecar!"></ButtonT>
         </CronStyled>
     )
 }

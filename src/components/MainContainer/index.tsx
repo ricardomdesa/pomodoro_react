@@ -21,11 +21,31 @@ export default function MainContainer() {
         })))
     }
 
+    const finalizarTarefa = () => {
+        if(selected){
+            setSelected(undefined)
+            setTasks(prevTasks => 
+                prevTasks.map(task => {
+                    if(task.id === selected.id){
+                        return {
+                            ...task,
+                            selecionado: false,
+                            completado: true
+                        }
+                    }
+                    return task
+                })
+            )
+        }
+    }
+
     return (
         <>
             <Container>
                 <Form setTasks={setTasks}></Form>
-                <Cronometro selected={selected} />
+                <Cronometro 
+                  selected={selected}
+                  finalizarTarefa={finalizarTarefa} />
                 <List
                     tasks={tasks}
                     selectTask={selectTask}

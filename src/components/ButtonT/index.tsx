@@ -6,7 +6,7 @@ import {
 interface Props {
     type?: "button" | "submit" | "reset" | undefined, 
     texto?: string,
-    onClick?: () => void
+    onClick?: (evt: any) => void
 } 
 
 
