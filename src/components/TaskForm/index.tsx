@@ -2,18 +2,16 @@ import React, { useState } from "react";
 import ButtonT from "../ButtonT";
 import { FormStyle } from "./styles";
 import { v4 as uuidv4 } from "uuid";
-import { ITasks } from "../../types/iTasks";
+import { useMainContext } from "../../providers/MainProvider";
 
-interface Props{
-    setTasks: React.Dispatch<React.SetStateAction<[] | ITasks[]>>
-}
+export default function TaskForm() {
+    const {setTasks} = useMainContext()
 
-export default function Form({ setTasks }: Props) {
     const [time, setTime] = useState("00:00:00")
     const [task, setTask] = useState("")
     function addTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
-        setTasks(oldTasks => [...oldTasks,
+        setTasks((oldTasks: any) => [...oldTasks,
         {
             id: uuidv4(),
             tarefa: task,
