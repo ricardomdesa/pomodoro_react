@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { tempoParaSegundos } from "../../common/utils/time";
 import ButtonT from "../ButtonT";
 import Relogio from "./Relogio";
 import { CronStyled, CronTitle } from "./styles";
@@ -7,7 +6,7 @@ import { useMainContext } from "../../providers/MainProvider";
 
 export default function Cronometro() {
     const { selected, setSelected, setTasks } = useMainContext()
-    const [tempo, setTempo] = useState<number>(tempoParaSegundos("00:00:00"))
+    const [tempo, setTempo] = useState<number>(0)
 
 
     const finalizarTarefa = () => {
@@ -30,7 +29,7 @@ export default function Cronometro() {
 
     useEffect(() => {
         if (selected) {
-            setTempo(tempoParaSegundos(selected.tempo))
+            setTempo(selected.tempo)
         }
     }, [selected])
 

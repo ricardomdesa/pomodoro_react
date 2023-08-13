@@ -13,6 +13,8 @@ export const FormStyle = styled.form`
     .inputContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin-bottom: 16px;
 

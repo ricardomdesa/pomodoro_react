@@ -7,7 +7,7 @@ import { useMainContext } from "../../providers/MainProvider";
 export default function TaskForm() {
     const {setTasks} = useMainContext()
 
-    const [time, setTime] = useState("00:00:00")
+    const [time, setTime] = useState(0)
     const [task, setTask] = useState("")
     function addTask(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
@@ -23,7 +23,7 @@ export default function TaskForm() {
         ])
         // Clear fields
         setTask("")
-        setTime("00:00:00")
+        setTime(0)
     }
     return (
         <FormStyle onSubmit={addTask}>
@@ -32,6 +32,7 @@ export default function TaskForm() {
                     Tarefa
                 </label>
                 <input
+                    style={{width: "60vw"}}
                     type="text"
                     name="tarefa"
                     id="tarefa"
@@ -41,20 +42,19 @@ export default function TaskForm() {
                     required
                 />
             </div>
-            <div className="inputContainer">
+            <div className="inputContainer" >
                 <label htmlFor="tempo">
                     Tempo
                 </label>
                 <input
-                    type="time"
-                    name="tempo"
-                    id="tempo"
-                    value={time}
-                    onChange={event => setTime(event.target.value)}
-                    step="1"
-                    min="00:00:00"
-                    max="01:30:00"
-                    required
+                style={{width: "20vw"}}
+                type="number"
+                name="tempo"
+                id="tempo"
+                value={time}
+                onChange={event => setTime(parseInt(event.target.value))}
+                step="1"
+                required
                 />
             </div>
             <ButtonT type="submit">Add</ButtonT>

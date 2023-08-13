@@ -1,7 +1,7 @@
 export interface ITasks {
     id: string,
     tarefa: string,
-    tempo: string,
+    tempo: number,
     selecionado: boolean,
     completado: boolean
 }
